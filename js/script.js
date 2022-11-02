@@ -19,12 +19,12 @@ This function will create and insert/append the elements needed to display a "pa
 
 
 function showPage(list, page) {
-   const startIndex = [0];
-   const endIndex = [41];
+   const startIndex = (page * 9) -9;
+   const endIndex = (page * 9);
    
-   const studentList = document.querySelector(".class-list"); 
+   const studentList = document.querySelector(".student-list"); 
    studentList.innerHTML = '';
-   for (let i = 0; i < list.length; i++) {
+   for (let i = list; i < list.length; i++) {
       if (i >= startIndex && i < endIndex) {
          const studentItem = `<li class="student-item cf">
          <div class="student-details">
@@ -36,9 +36,9 @@ function showPage(list, page) {
            <span class="date"> Joined ${[registered].date.age}</span>
          </div>
        </li>`;
+       studentList.insertAdjacentHTML('beforeend', studentItem);
      } 
     }
-    studentList.insertAdjacentHTML('beforeend', html);
 }
 showPage(data, 1);
 
