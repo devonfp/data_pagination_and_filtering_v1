@@ -17,13 +17,19 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
+// The list parameter will represent the array of student data. (42 students)
+// page parameter represents the page number that we want to display. 
 
 function showPage(list, page) {
-   const startIndex = (page * 9) -9;
-   const endIndex = (page * 9) -1;
+   
+  /*calculates the index for the first and last student to display on the page */
+  const startIndex = (page * 9) -9;
+   const endIndex = (page * 9) -1; 
+
    
    const studentList = document.querySelector(".student-list"); 
-   studentList.innerHTML = '';
+   studentList.innerHTML = ''; 
+   // ^removes any existing students that might have been displayed on previous pages.
    for (let i = 0; i < list.length; i++) {
       if (i >= startIndex && i <= endIndex) {
          const studentItem = `<li class="student-item cf">
@@ -36,8 +42,10 @@ function showPage(list, page) {
            <span class="date"> Joined ${list[i].registered.date}</span>
          </div>
        </li>`;
-       studentList.insertAdjacentHTML('beforeend', studentItem);
-     } //console.log(list[i])
+       studentList.insertAdjacentHTML('beforeend', studentItem); 
+       //^ this inserts studentItem into the HTML directlty after studentList class.
+     } console.log(list[i])
+       
     }
 }
 
@@ -50,13 +58,13 @@ This function will create and insert/append the elements needed for the paginati
 
 function addPagination(list) {
  
-   const numOfPages = Math.ceil(list.length/9);
+   const numOfPages = Math.ceil(list.length/9); // = 4.6 rounded to 5. 5 pages.
    const linkList =  document.querySelector('.link-list');
    linkList.innerHTML = '';
 
    for (let i = 1; i <= numOfPages; i++) {
      const button = `<li>
-     <button type="button">${numOfPages}</button>
+     <button type="button">${[i]}</button>
    </li>`;
    linkList.insertAdjacentHTML('beforeend', button);
    }
@@ -70,7 +78,6 @@ function addPagination(list) {
       
       if (eClicked.tagName === 'BUTTON') {
       firstPagBtn.className = '';
-      eClicked.className = 'active';
       showPage(list, eClicked.textContent);
    }
 
@@ -80,3 +87,5 @@ function addPagination(list) {
 // Call functions
 showPage(data, 1);
 addPagination(data);
+
+
