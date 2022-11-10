@@ -62,6 +62,7 @@ function addPagination(list) {
    const linkList =  document.querySelector('.link-list');
    linkList.innerHTML = '';
 
+   // Enables buttons to be listed 1-5 through use of the for loop
    for (let i = 1; i <= numOfPages; i++) {
      const button = `<li>
      <button type="button">${[i]}</button>
@@ -72,6 +73,7 @@ function addPagination(list) {
    const firstPagBtn = document.querySelector('button'); 
    firstPagBtn.className = 'active';
 
+   // gives the buttons functionality upon clicking
    linkList.addEventListener('click', (e) => {
       
       const eClicked = e.target;
