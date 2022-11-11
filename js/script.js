@@ -72,6 +72,7 @@ function addPagination(list) {
 
    const firstPagBtn = document.querySelector('button'); 
    firstPagBtn.className = 'active';
+   const li = document.querySelector('li');
 
    // gives the buttons functionality upon clicking
    linkList.addEventListener('click', (e) => {
@@ -81,7 +82,11 @@ function addPagination(list) {
       if (eClicked.tagName === 'BUTTON') {
       firstPagBtn.className = '';
       eClicked.className = 'active';
-      showPage(list, eClicked.textContent);
+   }
+
+   if (eClicked.tagName !== li.previousElementSibling) {
+    li.previousElementSibling.className = '';
+    showPage(list, eClicked.textContent);
    }
 
  console.log(list);
