@@ -80,6 +80,7 @@ function addPagination(list) {
       
       if (eClicked.tagName === 'BUTTON') {
       firstPagBtn.className = '';
+      eClicked.className = 'active';
       showPage(list, eClicked.textContent);
    }
 
