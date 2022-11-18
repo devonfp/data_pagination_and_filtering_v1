@@ -71,23 +71,19 @@ function addPagination(list) {
    }
 
    const firstPagBtn = document.querySelector('button'); 
-   firstPagBtn.className = 'active';
-   const li = document.querySelector('li');
+   firstPagBtn.className = 'active'; // Since the user starts on page 1, the active class is automactically added to button 1
 
-   // gives the buttons functionality upon clicking
+   // Adds the 'active' class to the buttons when clicked
    linkList.addEventListener('click', (e) => {
       
       const eClicked = e.target;
       
       if (eClicked.tagName === 'BUTTON') {
-      firstPagBtn.className = '';
+      document.querySelector('.active').className = '';
       eClicked.className = 'active';
+      showPage(list, eClicked.textContent);
    }
 
-   if (eClicked.tagName !== li.previousElementSibling) {
-    li.previousElementSibling.className = '';
-    showPage(list, eClicked.textContent);
-   }
 
  console.log(list);
 })}
